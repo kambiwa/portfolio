@@ -18,42 +18,48 @@ defmodule PortfolioWeb.HomeLive do
         title: "ZRL E-Ticketing System",
         description: "Digital railway ticket purchasing and validation system with real-time booking capabilities.",
         tags: ["Elixir", "Phoenix", "PostgreSQL"],
-        icon: "hero-ticket"
+        icon: "hero-ticket",
+        href: "https://zrl.com.zm/"
       },
       %{
         id: 2,
         title: "FRA E-Payment System",
         description: "Electronic payment system for agricultural services and farmer registrations.",
         tags: ["Payment APIs", "Node.js", "MongoDB"],
-        icon: "hero-banknotes"
+        icon: "hero-banknotes",
+        href: "https://fra.org.zm/"
       },
       %{
         id: 3,
         title: "NFRA E-Toll System",
         description: "Automated toll payment infrastructure with RFID integration and real-time monitoring.",
         tags: ["IoT", "Go", "Redis"],
-        icon: "hero-truck"
+        icon: "hero-truck",
+        href: "https://nrfa.org.zm/"
       },
       %{
         id: 4,
         title: "ZICB USSD Banking",
         description: "Mobile banking services using USSD for feature phones and offline transactions.",
         tags: ["USSD", "Elixir", "MySQL"],
-        icon: "hero-device-phone-mobile"
+        icon: "hero-device-phone-mobile",
+        href: "https://zicb.co.zm/"
       },
       %{
         id: 5,
         title: "Probase Payment Gateway",
         description: "Integration of digital payment infrastructure with multiple processor support.",
         tags: ["APIs", "Python", "AWS"],
-        icon: "hero-credit-card"
+        icon: "hero-credit-card",
+        href: "https://paymentservices.probasegroup.com/"
       },
       %{
         id: 6,
-        title: "Digital ID Platform",
+        title: "EFC Digital Payment System",
         description: "Government digital identity system with biometric integration and secure APIs.",
         tags: ["Security", "Java", "Oracle"],
-        icon: "hero-identification"
+        icon: "hero-identification",
+        href: "https://efczambia.com.zm/"
       }
     ]
 
@@ -97,10 +103,10 @@ defmodule PortfolioWeb.HomeLive do
     ]
 
     stats = [
-      %{value: "120+", label: "Projects"},
+      %{value: "78+", label: "Projects"},
       %{value: "95%", label: "Client Satisfaction"},
       %{value: "3+", label: "Years Experience"},
-      %{value: "50+", label: "Enterprise Clients"}
+      %{value: "30+", label: "Enterprise Clients"}
     ]
 
     tech_stack = ["Elixir", "Phoenix", "APIs", "USSD", "Payment Gateways", "Linux", "Databases"]
