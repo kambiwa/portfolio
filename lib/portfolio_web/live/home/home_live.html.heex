@@ -1,0 +1,270 @@
+<Layouts.app flash={@flash} page_title={@page_title} current_scope={@current_scope}>
+<%!-- Attach animations hook to the page wrapper --%>
+<div id="home" class="portfolio-page" phx-hook="PortfolioAnimations">
+
+  <%!-- ═══════════════════════ HERO ═══════════════════════ --%>
+  <section class="hero-section">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+
+    <div class="section-container hero-grid">
+      <%!-- left --%>
+      <div class="hero-content reveal-up">
+        <div class="available-badge">
+          <span class="badge-dot"></span>
+          Available for new projects
+        </div>
+
+        <h1 class="hero-title">
+          Software<br />
+          <span class="gradient-text">Developer</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Building Digital Payment Systems, Fintech Infrastructure, and Government Platforms
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary-glow">
+            View Projects
+            <.icon name="hero-arrow-right" class="w-5 h-5 ml-2" />
+          </a>
+          <a href="#" class="btn-outline">
+            <.icon name="hero-arrow-down-tray" class="w-5 h-5 mr-2" />
+            Download CV
+          </a>
+        </div>
+
+        <div class="stack-section">
+          <p class="stack-label">Tech Stack</p>
+          <div class="stack-tags">
+            <%= for tech <- @tech_stack do %>
+              <span class="stack-tag"><%= tech %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <%!-- right --%>
+      <div class="hero-visual reveal-up" style="animation-delay:.2s">
+        <img src={~p"/images/profile.png"} alt="Hero Visual" class="hero-image" />
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <.icon name="hero-chevron-down" class="w-6 h-6 text-base-content/30 animate-bounce" />
+    </div>
+  </section>
+
+  <%!-- ═══════════════════════ ABOUT ═══════════════════════ --%>
+  <section id="about" class="section-about">
+    <div class="section-container about-grid">
+      <div class="reveal-up">
+        <h2 class="section-title">
+          About <span class="gradient-text">Me</span>
+        </h2>
+        <div class="about-body">
+          <p>
+            Specializing in building robust fintech infrastructure and digital payment systems
+            that power modern economies. With deep expertise in financial technology, I develop
+            scalable solutions for complex banking and government systems.
+          </p>
+          <p>
+            My focus areas include payment gateway infrastructure, USSD platforms for financial
+            inclusion, and digital public infrastructure that connects millions to essential services.
+          </p>
+        </div>
+
+        <div class="about-checks">
+          <%= for item <- ~w(Fintech\ Systems Payment\ Gateways Digital\ Public\ Infrastructure Government\ Digital\ Systems Financial\ Inclusion\ Tech USSD\ Platforms) do %>
+            <div class="check-item">
+              <.icon name="hero-check-circle" class="w-5 h-5 text-primary flex-shrink-0" />
+              <span><%= item %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="stats-grid reveal-up" style="animation-delay:.2s">
+        <%= for stat <- @stats do %>
+          <div class="stat-card">
+            <span class="stat-value"><%= stat.value %></span>
+            <span class="stat-label"><%= stat.label %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%!-- ═══════════════════════ SKILLS ═══════════════════════ --%>
+  <section id="skills" class="section-skills">
+    <div class="section-container">
+      <div class="section-header reveal-up">
+        <h2 class="section-title">
+          Technical <span class="gradient-text">Skills</span>
+        </h2>
+        <p class="section-subtitle">
+          Expertise in building enterprise-grade financial systems and digital infrastructure
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <%= for skill <- @skills do %>
+          <div class="skill-row reveal-up">
+            <div class="skill-meta">
+              <span class="skill-name"><%= skill.name %></span>
+              <span class="skill-pct"><%= skill.level %>%</span>
+            </div>
+            <div class="skill-track">
+              <div
+                class="skill-bar"
+                style={"--target-width: #{skill.level}%"}
+                data-width={skill.level}
+              ></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%!-- ═══════════════════════ PROJECTS ═══════════════════════ --%>
+  <section id="projects" class="section-projects">
+    <div class="section-container">
+      <div class="section-header reveal-up">
+        <h2 class="section-title">
+          Featured <span class="gradient-text">Projects</span>
+        </h2>
+        <p class="section-subtitle">
+          Enterprise solutions built for financial institutions and government agencies
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <%= for {project, i} <- Enum.with_index(@projects) do %>
+          <div class="project-card reveal-up" style={"animation-delay: #{rem(i, 3) * 0.1}s"}>
+            <div class="project-icon-wrap">
+              <.icon name={project.icon} class="w-8 h-8 text-primary/60" />
+            </div>
+            <div class="project-body">
+              <h3 class="project-title"><%= project.title %></h3>
+              <p class="project-desc"><%= project.description %></p>
+              <div class="project-tags">
+                <%= for tag <- project.tags do %>
+                  <span class="project-tag"><%= tag %></span>
+                <% end %>
+              </div>
+              <a href="#" class="project-link">
+                View Project
+                <.icon name="hero-arrow-top-right-on-square" class="w-4 h-4 ml-1" />
+              </a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%!-- ═══════════════════════ SERVICES ═══════════════════════ --%>
+  <section id="services" class="section-services">
+    <div class="section-container">
+      <div class="section-header reveal-up">
+        <h2 class="section-title">
+          Service <span class="gradient-text">Capabilities</span>
+        </h2>
+        <p class="section-subtitle">
+          End-to-end solutions for digital transformation and financial technology
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <%= for {svc, i} <- Enum.with_index(@services) do %>
+          <div
+            class={"service-card service-card--#{svc.accent} reveal-up"}
+            style={"animation-delay: #{rem(i, 3) * 0.1}s"}
+          >
+            <div class={"service-icon service-icon--#{svc.accent}"}>
+              <.icon name={svc.icon} class="w-7 h-7" />
+            </div>
+            <h3 class="service-title"><%= svc.title %></h3>
+            <p class="service-desc"><%= svc.description %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%!-- ═══════════════════════ CONTACT ═══════════════════════ --%>
+  <section id="contact" class="section-contact">
+    <div class="section-container contact-grid">
+      <div class="reveal-up">
+        <h2 class="section-title">
+          Reach  <span class="gradient-text">Out</span>
+        </h2>
+        <p class="contact-intro">
+          Have a project in mind? Let's discuss how we can build something amazing together.
+        </p>
+
+        <div class="contact-info">
+          <%= for {icon, label, value, href} <- [
+            {"hero-envelope",     "Email",    "hello@devfintech.com",        "mailto:hello@devfintech.com"},
+            {"hero-user",         "LinkedIn", "linkedin.com/in/devfintech",  "#"},
+            {"hero-code-bracket", "GitHub",   "github.com/devfintech",       "#"},
+            {"hero-map-pin",      "Location", "Remote / Available Worldwide","#"}
+          ] do %>
+            <div class="contact-row">
+              <div class="contact-icon">
+                <.icon name={icon} class="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p class="contact-label"><%= label %></p>
+                <a href={href} class="contact-value"><%= value %></a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <%!-- contact form --%>
+      <div class="contact-form-card reveal-up" style="animation-delay:.2s">
+        <%= if @form_sent do %>
+          <div class="form-success">
+            <.icon name="hero-check-circle" class="w-12 h-12 text-success mx-auto mb-4" />
+            <h3 class="text-xl font-bold text-base-content mb-2">Message Sent!</h3>
+            <p class="text-base-content/60 mb-6">I'll get back to you as soon as possible.</p>
+            <button phx-click="reset_form" class="btn-primary-glow">
+              Send Another
+            </button>
+          </div>
+        <% else %>
+          <form phx-submit="submit_contact" class="contact-form">
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">Name</label>
+                <input type="text"  name="name"    required placeholder="John Doe"         class="form-input" />
+              </div>
+              <div class="form-field">
+                <label class="form-label">Email</label>
+                <input type="email" name="email"   required placeholder="john@example.com" class="form-input" />
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Subject</label>
+              <input type="text" name="subject" required placeholder="Project Inquiry" class="form-input" />
+            </div>
+            <div class="form-field">
+              <label class="form-label">Message</label>
+              <textarea name="message" rows="4" required placeholder="Tell me about your project..." class="form-input form-textarea"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              Send Message
+              <.icon name="hero-paper-airplane" class="w-4 h-4 ml-2" />
+            </button>
+          </form>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+</div>
+</Layouts.app>
